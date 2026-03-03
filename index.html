@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Shadab Ansari | Digital Marketing</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --dark:#0a0a14;
+  --navy:#0f1b35;
+  --blue:#1a73e8;
+  --accent:#4f8ef7;
+  --light:#f0f4ff;
+  --grey:#8892a4;
+  --white:#ffffff;
+  --card:#111827;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--dark);color:var(--white);line-height:1.6;}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:5px;}
+::-webkit-scrollbar-track{background:var(--dark);}
+::-webkit-scrollbar-thumb{background:var(--blue);border-radius:10px;}
+
+/* NAV */
+nav{
+  position:fixed;top:0;width:100%;z-index:100;
+  background:rgba(10,10,20,0.85);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,255,255,.06);
+  padding:14px 40px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.logo{font-weight:800;font-size:1.1rem;color:var(--white);letter-spacing:.5px;}
+.logo span{color:var(--accent);}
+.nav-links{display:flex;gap:32px;}
+.nav-links a{
+  color:var(--grey);text-decoration:none;
+  font-size:.88rem;font-weight:500;
+  transition:.2s;position:relative;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-4px;left:0;
+  width:0;height:2px;background:var(--accent);
+  transition:.3s;border-radius:2px;
+}
+.nav-links a:hover{color:var(--white);}
+.nav-links a:hover::after{width:100%;}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;
+  padding:100px 40px 60px;
+  max-width:1100px;margin:0 auto;
+  gap:60px;
+}
+.hero-left{flex:1;}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(26,115,232,.12);
+  border:1px solid rgba(26,115,232,.3);
+  color:var(--accent);
+  padding:6px 16px;border-radius:20px;
+  font-size:.8rem;font-weight:600;letter-spacing:.5px;
+  margin-bottom:22px;
+}
+.dot{width:7px;height:7px;background:#22c55e;border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+.hero h1{font-size:clamp(2.2rem,4vw,3.4rem);font-weight:800;line-height:1.15;margin-bottom:8px;}
+.hero h1 span{
+  background:linear-gradient(90deg,var(--blue),var(--accent));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero-role{color:var(--grey);font-size:1.05rem;margin-bottom:18px;}
+.hero p{color:#9ca3af;font-size:.95rem;line-height:1.75;max-width:480px;margin-bottom:32px;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
+.btn{padding:12px 26px;border-radius:10px;font-weight:600;font-size:.88rem;cursor:pointer;text-decoration:none;transition:.25s;display:inline-flex;align-items:center;gap:8px;border:none;}
+.btn-primary{background:var(--blue);color:#fff;}
+.btn-primary:hover{background:#1558b0;transform:translateY(-2px);}
+.btn-ghost{background:rgba(255,255,255,.06);color:var(--white);border:1px solid rgba(255,255,255,.12);}
+.btn-ghost:hover{background:rgba(255,255,255,.1);transform:translateY(-2px);}
+
+/* HERO IMAGE */
+.hero-right{
+  flex-shrink:0;
+  display:flex;flex-direction:column;align-items:center;gap:20px;
+}
+.photo-wrap{
+  position:relative;
+  width:260px;height:300px;
+}
+.photo-bg{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(26,115,232,.3),rgba(79,142,247,.1));
+  border-radius:24px;
+  border:1px solid rgba(26,115,232,.3);
+}
+.photo-wrap img{
+  position:relative;z-index:1;
+  width:100%;height:100%;
+  object-fit:cover;object-position:top;
+  border-radius:24px;
+  filter:grayscale(10%);
+}
+/* PLACEHOLDER — replace img src with your photo */
+.photo-placeholder{
+  position:relative;z-index:1;
+  width:100%;height:100%;
+  border-radius:24px;
+  background:linear-gradient(160deg,#1a2744,#0f1b35);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:12px;color:var(--grey);font-size:.85rem;
+  border:2px dashed rgba(79,142,247,.3);
+}
+.photo-placeholder .icon{font-size:3rem;}
+.stats-row{display:flex;gap:16px;}
+.stat-box{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:12px;padding:14px 20px;text-align:center;
+  min-width:80px;
+}
+.stat-box .num{font-size:1.4rem;font-weight:800;color:var(--accent);}
+.stat-box .lbl{font-size:.72rem;color:var(--grey);margin-top:2px;}
+
+/* SECTION BASE */
+.section{padding:80px 40px;max-width:1100px;margin:0 auto;}
+.sec-label{color:var(--accent);font-size:.78rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.sec-title{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;margin-bottom:8px;}
+.sec-sub{color:var(--grey);font-size:.92rem;margin-bottom:48px;}
+.divider{width:40px;height:3px;background:linear-gradient(90deg,var(--blue),var(--accent));border-radius:2px;margin:12px 0 40px;}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;}
+.skill-card{
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:14px;padding:22px;
+  transition:.25s;cursor:default;
+}
+.skill-card:hover{background:rgba(26,115,232,.08);border-color:rgba(26,115,232,.3);transform:translateY(-3px);}
+.sk-icon{font-size:1.8rem;margin-bottom:12px;}
+.sk-name{font-size:.92rem;font-weight:700;margin-bottom:4px;}
+.sk-desc{font-size:.78rem;color:var(--grey);}
+
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:22px;}
+.proj-card{
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:16px;overflow:hidden;
+  transition:.25s;
+}
+.proj-card:hover{transform:translateY(-5px);border-color:rgba(26,115,232,.35);box-shadow:0 12px 40px rgba(26,115,232,.12);}
+.proj-top{padding:24px;border-bottom:1px solid rgba(255,255,255,.06);}
+.proj-num{font-size:.72rem;color:var(--accent);font-weight:700;letter-spacing:1px;margin-bottom:8px;}
+.proj-top h3{font-size:1rem;font-weight:700;margin-bottom:6px;}
+.proj-niche{font-size:.78rem;color:var(--grey);}
+.proj-body{padding:20px;}
+.proj-body p{font-size:.85rem;color:#9ca3af;line-height:1.7;margin-bottom:16px;}
+.metrics{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
+.met{background:rgba(26,115,232,.12);color:var(--accent);padding:4px 12px;border-radius:20px;font-size:.75rem;font-weight:700;}
+.tags{display:flex;gap:6px;flex-wrap:wrap;}
+.tag{background:rgba(255,255,255,.05);color:var(--grey);padding:3px 10px;border-radius:20px;font-size:.72rem;}
+
+/* CERTS */
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
+.cert-card{
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:14px;padding:20px 22px;
+  display:flex;align-items:center;gap:16px;
+  transition:.25s;
+}
+.cert-card:hover{border-color:rgba(26,115,232,.3);background:rgba(26,115,232,.05);}
+.cert-icon{
+  width:46px;height:46px;border-radius:12px;
+  background:rgba(26,115,232,.15);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;flex-shrink:0;
+}
+.cert-info h4{font-size:.9rem;font-weight:700;margin-bottom:3px;}
+.cert-info p{font-size:.76rem;color:var(--grey);}
+.cert-year{margin-left:auto;font-size:.78rem;color:var(--accent);font-weight:700;flex-shrink:0;}
+
+/* CONTACT */
+.contact-wrap{
+  background:linear-gradient(135deg,rgba(15,27,53,1),rgba(10,10,20,1));
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:24px;padding:60px 40px;text-align:center;
+}
+.contact-wrap h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;margin-bottom:10px;}
+.contact-wrap p{color:var(--grey);max-width:480px;margin:0 auto 36px;font-size:.92rem;}
+
+/* FORM */
+.form{max-width:520px;margin:0 auto;text-align:left;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+.form input,.form textarea,.form select{
+  width:100%;padding:12px 16px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:10px;color:var(--white);
+  font-size:.88rem;font-family:inherit;
+  transition:.2s;outline:none;
+}
+.form input:focus,.form textarea:focus{border-color:var(--accent);background:rgba(79,142,247,.07);}
+.form textarea{resize:vertical;min-height:110px;margin-bottom:14px;}
+.form input::placeholder,.form textarea::placeholder{color:var(--grey);}
+.form-submit{
+  width:100%;padding:13px;
+  background:var(--blue);color:#fff;
+  border:none;border-radius:10px;
+  font-size:.92rem;font-weight:700;
+  cursor:pointer;transition:.25s;
+  font-family:inherit;
+}
+.form-submit:hover{background:#1558b0;transform:translateY(-2px);}
+.form-note{text-align:center;margin-top:10px;font-size:.75rem;color:var(--grey);}
+
+.social-links{display:flex;gap:12px;justify-content:center;margin-top:28px;flex-wrap:wrap;}
+.soc-btn{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);
+  color:var(--white);padding:10px 22px;
+  border-radius:10px;text-decoration:none;
+  font-size:.85rem;font-weight:500;
+  transition:.2s;display:flex;align-items:center;gap:8px;
+}
+.soc-btn:hover{background:rgba(26,115,232,.15);border-color:rgba(26,115,232,.4);}
+
+/* FOOTER */
+footer{
+  text-align:center;padding:24px;
+  color:var(--grey);font-size:.8rem;
+  border-top:1px solid rgba(255,255,255,.05);
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav{padding:14px 20px;}
+  .nav-links{gap:18px;}
+  .hero{flex-direction:column-reverse;padding:100px 20px 50px;gap:40px;text-align:center;}
+  .hero p{margin:0 auto 28px;}
+  .hero-btns{justify-content:center;}
+  .hero-right{width:100%;}
+  .photo-wrap{width:200px;height:240px;}
+  .section{padding:60px 20px;}
+  .form-row{grid-template-columns:1fr;}
+  .contact-wrap{padding:40px 20px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Shadab<span>.</span></div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#certs">Certifications</a>
+    <a href="#contact">Hire Me</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="about">
+  <div class="hero-left">
+    <div class="hero-tag">
+      <span class="dot"></span>
+      Available for Internship & Freelance
+    </div>
+    <h1>Hi, I'm<br><span>Shadab Ansari</span></h1>
+    <div class="hero-role">Digital Marketing Specialist · Meta Ads · Content Strategy</div>
+    <p>Karachi-based digital marketer passionate about paid social campaigns, audience targeting, and data-driven results. Certified through Bano Qabil, Meta & Google. Ready to deliver real impact from Day 1.</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn btn-primary">🚀 View My Work</a>
+      <a href="#contact" class="btn btn-ghost">💬 Let's Talk</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="photo-wrap">
+      <div class="photo-bg"></div>
+      <!-- 
+        PHOTO STEP:
+        1. Go to remove.bg and upload your photo
+        2. Download the PNG
+        3. Put it in same folder as index.html, name it "shadab.png"
+        4. Replace the div below with: <img src="shadab.png" alt="Shadab Ansari"/>
+      -->
+      <div class="photo-placeholder">
+        <div class="icon">🧑‍💼</div>
+        <div>Add photo here<br><small style="font-size:.7rem">See instructions above</small></div>
+      </div>
+    </div>
+    <div class="stats-row">
+      <div class="stat-box"><div class="num">3+</div><div class="lbl">Projects</div></div>
+      <div class="stat-box"><div class="num">3</div><div class="lbl">Certs</div></div>
+      <div class="stat-box"><div class="num">1+</div><div class="lbl">Years</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<div class="section" id="skills">
+  <div class="sec-label">What I Do</div>
+  <div class="sec-title">Skills & Tools</div>
+  <div class="divider"></div>
+  <div class="skills-grid">
+    <div class="skill-card"><div class="sk-icon">📘</div><div class="sk-name">Meta Ads Manager</div><div class="sk-desc">Campaign setup, budgeting, optimization</div></div>
+    <div class="skill-card"><div class="sk-icon">🎯</div><div class="sk-name">Audience Targeting</div><div class="sk-desc">Custom & lookalike audiences, persona building</div></div>
+    <div class="skill-card"><div class="sk-icon">📊</div><div class="sk-name">A/B Testing</div><div class="sk-desc">Ad copy, creative & headline testing</div></div>
+    <div class="skill-card"><div class="sk-icon">🎨</div><div class="sk-name">Canva</div><div class="sk-desc">Branded visuals, creatives, carousels</div></div>
+    <div class="skill-card"><div class="sk-icon">📅</div><div class="sk-name">Content Strategy</div><div class="sk-desc">Content calendars, scheduling, pillars</div></div>
+    <div class="skill-card"><div class="sk-icon">📈</div><div class="sk-name">Performance Tracking</div><div class="sk-desc">CTR, CPL, ROAS, KPI reporting</div></div>
+    <div class="skill-card"><div class="sk-icon">✍️</div><div class="sk-name">Ad Copywriting</div><div class="sk-desc">PAS framework, bilingual copy</div></div>
+    <div class="skill-card"><div class="sk-icon">🔍</div><div class="sk-name">Hashtag Research</div><div class="sk-desc">Competitor analysis, niche discovery</div></div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<div class="section" id="projects">
+  <div class="sec-label">My Work</div>
+  <div class="sec-title">Projects</div>
+  <div class="divider"></div>
+  <div class="projects-grid">
+
+    <div class="proj-card">
+      <div class="proj-top">
+        <div class="proj-num">PROJECT 01</div>
+        <h3>E-Commerce Facebook Ad Campaign</h3>
+        <div class="proj-niche">StyleKarachi · Clothing Brand</div>
+      </div>
+      <div class="proj-body">
+        <p>Conversion-focused Facebook campaign. A/B tested 3 creatives and 2 copy variants. Urdu-English mix copy outperformed English-only by 2x.</p>
+        <div class="metrics">
+          <span class="met">+18% CTR</span>
+          <span class="met">Rs.9 CPC</span>
+          <span class="met">22 Conversions</span>
+        </div>
+        <div class="tags">
+          <span class="tag">Facebook Ads</span>
+          <span class="tag">A/B Testing</span>
+          <span class="tag">Canva</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-top">
+        <div class="proj-num">PROJECT 02</div>
+        <h3>Instagram Brand Awareness Campaign</h3>
+        <div class="proj-niche">BiteBox · Food Brand</div>
+      </div>
+      <div class="proj-body">
+        <p>4-week Instagram strategy with full content calendar. Designed 12 branded visuals. Poll & quiz stories drove highest engagement.</p>
+        <div class="metrics">
+          <span class="met">+340% Reach</span>
+          <span class="met">800+ Story Views</span>
+          <span class="met">+210% Profile Visits</span>
+        </div>
+        <div class="tags">
+          <span class="tag">Instagram</span>
+          <span class="tag">Content Strategy</span>
+          <span class="tag">Hashtag Research</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-top">
+        <div class="proj-num">PROJECT 03</div>
+        <h3>Lead Generation · Real Estate</h3>
+        <div class="proj-niche">BaghbanHomes · Real Estate</div>
+      </div>
+      <div class="proj-body">
+        <p>Facebook lead gen using Instant Forms. Applied PAS copywriting framework. Lookalike audiences outperformed interest targeting on CPL.</p>
+        <div class="metrics">
+          <span class="met">68 Leads</span>
+          <span class="met">-22% CPL</span>
+          <span class="met">73% Form Rate</span>
+        </div>
+        <div class="tags">
+          <span class="tag">Lead Gen</span>
+          <span class="tag">Lookalike Audience</span>
+          <span class="tag">Copywriting</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CERTS -->
+<div class="section" id="certs">
+  <div class="sec-label">Credentials</div>
+  <div class="sec-title">Certifications</div>
+  <div class="divider"></div>
+  <div class="certs-grid">
+    <div class="cert-card">
+      <div class="cert-icon">🎓</div>
+      <div class="cert-info"><h4>Digital Marketing</h4><p>Bano Qabil Program</p></div>
+      <div class="cert-year">2024</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">📘</div>
+      <div class="cert-info"><h4>Meta Blueprint</h4><p>Intro to Digital Marketing · Meta</p></div>
+      <div class="cert-year">2024</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🌐</div>
+      <div class="cert-info"><h4>Fundamentals of Digital Marketing</h4><p>Google Digital Garage</p></div>
+      <div class="cert-year">2024</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="section" id="contact">
+  <div class="contact-wrap">
+    <div class="sec-label" style="justify-content:center;display:flex;">Get In Touch</div>
+    <h2>Let's Work Together</h2>
+    <p>Looking for a digital marketing intern or freelancer? Fill the form below — I'll get back to you within 24 hours.</p>
+
+    <!-- 
+      FORMSPREE SETUP:
+      1. Go to formspree.io → create free account
+      2. Create new form → copy your form ID
+      3. Replace "YOUR_FORM_ID" below with your actual ID
+    -->
+    <form class="form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <div class="form-row">
+        <input type="text" name="name" placeholder="Your Name" required/>
+        <input type="email" name="email" placeholder="Your Email" required/>
+      </div>
+      <input type="text" name="subject" placeholder="Subject (e.g. Internship Offer, Freelance Project)" style="margin-bottom:14px;"/>
+      <textarea name="message" placeholder="Tell me about the opportunity or project..." required></textarea>
+      <button type="submit" class="form-submit">Send Message →</button>
+      <div class="form-note">📩 Direct to my inbox · ansahadab65@gmail.com</div>
+    </form>
+
+    <div class="social-links">
+      <a href="mailto:ansahadab65@gmail.com" class="soc-btn">📧 Email</a>
+      <a href="https://linkedin.com/in/shadab-ansari-5147a4250" class="soc-btn">💼 LinkedIn</a>
+      <a href="tel:+923132163712" class="soc-btn">📞 Call</a>
+    </div>
+  </div>
+</div>
+
+<footer>© 2024 Shadab Ansari · Karachi, Pakistan · Built for opportunities</footer>
+
+</body>
+</html>
