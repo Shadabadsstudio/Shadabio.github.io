@@ -5,60 +5,87 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Shadab Ads Studio | Paid Social Media Marketing</title>
 <meta name="description" content="Shadab Ads Studio — Facebook & Instagram Ads, Lead Generation, Content Strategy. Based in Pakistan."/>
+<link rel="icon" type="image/x-icon" href="favicon.ico"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{
-  --bg:#080810;--card:#0e0e1a;--border:#1a1a2e;
-  --blue:#2563eb;--accent:#3b82f6;--glow:#1d4ed8;
+  --bg:#080810;--card:#0e0e1a;
+  --blue:#2563eb;--accent:#3b82f6;
   --text:#f1f5f9;--muted:#64748b;--soft:#94a3b8;
 }
 html{scroll-behavior:smooth;}
-body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;}
 ::-webkit-scrollbar{width:4px;}
 ::-webkit-scrollbar-track{background:var(--bg);}
 ::-webkit-scrollbar-thumb{background:var(--blue);border-radius:10px;}
 
-/* NAV */
+/* ── PAGE SYSTEM ── */
+.page{display:none;min-height:100vh;}
+.page.active{display:block;}
+
+/* ── NAV ── */
 nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(8,8,16,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);padding:16px 48px;display:flex;justify-content:space-between;align-items:center;}
-.logo-wrap{display:flex;flex-direction:column;line-height:1.1;}
-.logo-main{font-weight:800;font-size:1.1rem;background:linear-gradient(90deg,#fff,#93c5fd);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.logo-sub{font-size:.65rem;color:var(--muted);font-weight:500;letter-spacing:.5px;}
+.logo-wrap{display:flex;align-items:center;gap:10px;cursor:pointer;}
+.logo-avatar{width:36px;height:36px;border-radius:50%;overflow:hidden;border:2px solid rgba(37,99,235,.4);flex-shrink:0;background:rgba(37,99,235,.2);display:flex;align-items:center;justify-content:center;font-size:.9rem;}
+.logo-avatar img{width:100%;height:100%;object-fit:cover;object-position:top;}
+.logo-text{display:flex;flex-direction:column;line-height:1.1;}
+.logo-main{font-weight:800;font-size:1rem;background:linear-gradient(90deg,#fff,#93c5fd);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.logo-sub{font-size:.62rem;color:var(--muted);font-weight:500;}
 .nav-links{display:flex;gap:36px;align-items:center;}
-.nav-links a{color:var(--muted);text-decoration:none;font-size:.85rem;font-weight:500;transition:.2s;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.85rem;font-weight:500;transition:.2s;cursor:pointer;}
 .nav-links a:hover{color:#fff;}
-.nav-cta{background:var(--blue);color:#fff !important;padding:8px 20px;border-radius:8px;font-weight:600 !important;}
+.nav-cta{background:var(--blue);color:#fff !important;padding:8px 20px;border-radius:8px;font-weight:600 !important;transition:.2s !important;}
 .nav-cta:hover{background:#1d4ed8 !important;transform:translateY(-1px);}
 
-/* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:120px 48px 80px;position:relative;overflow:hidden;}
-.hero-glow{position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(37,99,235,.13) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;}
-.hero-inner{max-width:820px;text-align:center;position:relative;z-index:1;}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,.1);border:1px solid rgba(37,99,235,.25);color:#93c5fd;padding:6px 18px;border-radius:20px;font-size:.78rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;margin-bottom:28px;}
-.live-dot{width:7px;height:7px;background:#22c55e;border-radius:50%;animation:blink 2s infinite;}
-@keyframes blink{0%,100%{opacity:1;box-shadow:0 0 6px #22c55e;}50%{opacity:.3;box-shadow:none;}}
-.hero-studio{font-size:clamp(2.6rem,5.5vw,4.2rem);font-weight:800;line-height:1.05;letter-spacing:-1.5px;background:linear-gradient(135deg,#fff 30%,#93c5fd 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px;}
-.hero-byline{font-size:.95rem;color:var(--muted);margin-bottom:6px;font-weight:400;}
-.hero-byline span{color:var(--soft);font-weight:600;}
-.hero-role{color:var(--soft);font-size:.92rem;margin-bottom:22px;font-weight:400;letter-spacing:.2px;}
-.hero-desc{color:var(--muted);font-size:.97rem;line-height:1.8;max-width:580px;margin:0 auto 38px;}
-.hero-desc strong{color:var(--soft);}
-.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:56px;}
-.btn{padding:13px 30px;border-radius:10px;font-weight:700;font-size:.9rem;cursor:pointer;text-decoration:none;transition:.25s;display:inline-flex;align-items:center;gap:8px;border:none;}
+/* ── BUTTONS ── */
+.btn{padding:13px 28px;border-radius:10px;font-weight:700;font-size:.9rem;cursor:pointer;text-decoration:none;transition:.25s;display:inline-flex;align-items:center;gap:8px;border:none;}
 .btn-primary{background:var(--blue);color:#fff;box-shadow:0 4px 24px rgba(37,99,235,.35);}
 .btn-primary:hover{background:#1d4ed8;transform:translateY(-2px);box-shadow:0 8px 32px rgba(37,99,235,.45);}
 .btn-ghost{background:rgba(255,255,255,.05);color:#fff;border:1px solid rgba(255,255,255,.1);}
 .btn-ghost:hover{background:rgba(255,255,255,.09);transform:translateY(-2px);}
-.stats-row{display:flex;gap:0;justify-content:center;border:1px solid rgba(255,255,255,.07);border-radius:16px;overflow:hidden;max-width:560px;margin:0 auto;}
-.stat{flex:1;padding:20px 16px;text-align:center;border-right:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.02);}
-.stat:last-child{border-right:none;}
-.stat-num{font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,#3b82f6,#93c5fd);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.stat-lbl{font-size:.7rem;color:var(--muted);margin-top:3px;font-weight:500;}
 
-/* SECTIONS */
+/* ── SECTIONS ── */
 .sec{padding:90px 48px;max-width:1100px;margin:0 auto;}
 .sec-tag{color:var(--accent);font-size:.72rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:10px;}
 .sec-title{font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800;margin-bottom:6px;letter-spacing:-.5px;}
 .sec-sub{color:var(--muted);font-size:.92rem;margin-bottom:50px;max-width:520px;}
+
+/* ════════════════════════════════
+   PAGE 1 — HOME
+════════════════════════════════ */
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 48px 80px;max-width:1100px;margin:0 auto;gap:70px;}
+.hero-glow{position:fixed;width:700px;height:700px;background:radial-gradient(circle,rgba(37,99,235,.1) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:0;}
+.hero-left{flex:1;position:relative;z-index:1;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,.1);border:1px solid rgba(37,99,235,.25);color:#93c5fd;padding:6px 18px;border-radius:20px;font-size:.78rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;margin-bottom:24px;}
+.live-dot{width:7px;height:7px;background:#22c55e;border-radius:50%;animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1;box-shadow:0 0 6px #22c55e;}50%{opacity:.3;box-shadow:none;}}
+.hero-studio{font-size:clamp(2.4rem,5vw,3.8rem);font-weight:800;line-height:1.05;letter-spacing:-1.5px;background:linear-gradient(135deg,#fff 30%,#93c5fd 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px;}
+.hero-byline{font-size:.92rem;color:var(--muted);margin-bottom:18px;}
+.hero-byline span{color:var(--soft);font-weight:600;}
+.hero-desc{color:var(--muted);font-size:.97rem;line-height:1.8;margin-bottom:36px;}
+.hero-desc strong{color:var(--soft);}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:44px;}
+.stats-row{display:flex;gap:0;border:1px solid rgba(255,255,255,.07);border-radius:14px;overflow:hidden;max-width:460px;}
+.stat{flex:1;padding:18px 12px;text-align:center;border-right:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.02);}
+.stat:last-child{border-right:none;}
+.stat-num{font-size:1.4rem;font-weight:800;background:linear-gradient(135deg,#3b82f6,#93c5fd);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.stat-lbl{font-size:.68rem;color:var(--muted);margin-top:2px;font-weight:500;}
+.hero-right{flex-shrink:0;position:relative;z-index:1;}
+.hero-photo-wrap{position:relative;width:300px;}
+.hero-photo-box{width:300px;height:380px;border-radius:24px;overflow:hidden;border:1px solid rgba(37,99,235,.25);background:linear-gradient(160deg,#1a2744,#0a0a14);position:relative;}
+.hero-photo-box img{width:100%;height:100%;object-fit:cover;object-position:top;}
+.hero-photo-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--muted);font-size:.82rem;text-align:center;padding:20px;}
+.hero-photo-placeholder .big{font-size:3rem;}
+.hero-photo-glow{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 60%,rgba(8,8,16,.95) 100%);border-radius:24px;pointer-events:none;}
+.hero-photo-tag{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);background:rgba(8,8,16,.9);border:1px solid rgba(37,99,235,.3);padding:7px 16px;border-radius:20px;font-size:.74rem;color:#93c5fd;font-weight:600;white-space:nowrap;}
+.floating-badge{position:absolute;background:var(--card);border:1px solid rgba(37,99,235,.25);border-radius:12px;padding:10px 14px;display:flex;align-items:center;gap:8px;box-shadow:0 8px 24px rgba(0,0,0,.4);}
+.fb-text{display:flex;flex-direction:column;line-height:1.2;}
+.fb-text span:first-child{font-size:.78rem;font-weight:700;color:var(--text);}
+.fb-text span:last-child{font-size:.68rem;color:var(--muted);}
+.badge-top{top:-18px;right:-18px;}
+.badge-bottom{bottom:60px;left:-20px;}
 
 /* SERVICES */
 .services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;}
@@ -67,7 +94,7 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(8,8,16,0.92);bac
 .service-card:hover{border-color:rgba(37,99,235,.3);transform:translateY(-4px);box-shadow:0 12px 40px rgba(37,99,235,.1);}
 .service-card:hover::before{opacity:1;}
 .svc-icon-wrap{width:52px;height:52px;border-radius:14px;background:rgba(37,99,235,.12);border:1px solid rgba(37,99,235,.2);display:flex;align-items:center;justify-content:center;margin-bottom:20px;}
-.meta-icon{width:26px;height:26px;}
+.meta-svg{width:26px;height:26px;}
 .svc-emoji{font-size:1.5rem;}
 .svc-title{font-size:1rem;font-weight:700;margin-bottom:10px;}
 .svc-desc{font-size:.85rem;color:var(--muted);line-height:1.7;margin-bottom:18px;}
@@ -81,10 +108,10 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(8,8,16,0.92);bac
 .result-card:hover{border-color:rgba(37,99,235,.3);transform:translateY(-4px);}
 .result-top{padding:26px 26px 20px;border-bottom:1px solid rgba(255,255,255,.05);}
 .industry-tag{display:inline-block;background:rgba(37,99,235,.12);border:1px solid rgba(37,99,235,.2);color:#93c5fd;padding:4px 12px;border-radius:20px;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:12px;}
-.result-top h3{font-size:.98rem;font-weight:700;margin-bottom:4px;}
+.result-top h3{font-size:1rem;font-weight:700;margin-bottom:4px;}
 .result-obj{font-size:.78rem;color:var(--muted);}
 .result-body{padding:20px 26px;}
-.result-body p{font-size:.85rem;color:var(--muted);line-height:1.7;margin-bottom:16px;}
+.result-body p{font-size:.85rem;color:var(--muted);line-height:1.75;margin-bottom:16px;}
 .metrics{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
 .met{background:rgba(37,99,235,.1);border:1px solid rgba(37,99,235,.2);color:#93c5fd;padding:5px 12px;border-radius:20px;font-size:.75rem;font-weight:700;}
 .tags{display:flex;gap:6px;flex-wrap:wrap;}
@@ -95,7 +122,6 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(8,8,16,0.92);bac
 .about-img-box{background:linear-gradient(135deg,rgba(37,99,235,.15),rgba(14,14,26,1));border:1px solid rgba(37,99,235,.2);border-radius:24px;height:420px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
 .about-img-box img{width:100%;height:100%;object-fit:cover;object-position:top;border-radius:24px;}
 .about-placeholder{display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--muted);font-size:.82rem;text-align:center;}
-.about-placeholder .big{font-size:3.5rem;}
 .about-tag-float{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);background:rgba(8,8,16,.9);border:1px solid rgba(37,99,235,.3);padding:8px 18px;border-radius:20px;font-size:.75rem;color:#93c5fd;font-weight:600;white-space:nowrap;}
 .about-content .tagline{color:var(--accent);font-size:.85rem;font-weight:600;margin-bottom:20px;}
 .about-content p{color:var(--muted);font-size:.9rem;line-height:1.85;margin-bottom:14px;}
@@ -114,7 +140,76 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(8,8,16,0.92);bac
 .process-card h4{font-size:.9rem;font-weight:700;margin-bottom:6px;}
 .process-card p{font-size:.78rem;color:var(--muted);line-height:1.6;}
 
-/* CONTACT */
+/* ════════════════════════════════
+   PAGE 2 — BOOKING
+════════════════════════════════ */
+.booking-page{padding:120px 48px 80px;max-width:800px;margin:0 auto;}
+.booking-header{text-align:center;margin-bottom:50px;}
+.booking-header h1{font-size:clamp(2rem,4vw,2.8rem);font-weight:800;letter-spacing:-.5px;margin-bottom:10px;}
+.booking-header h1 span{background:linear-gradient(135deg,#3b82f6,#93c5fd);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.booking-header p{color:var(--muted);font-size:.95rem;max-width:500px;margin:0 auto;}
+
+/* CALENDAR */
+.booking-card{background:var(--card);border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:36px;margin-bottom:24px;}
+.booking-card h3{font-size:1rem;font-weight:700;margin-bottom:20px;display:flex;align-items:center;gap:8px;}
+.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-bottom:8px;}
+.cal-day-name{text-align:center;font-size:.7rem;color:var(--muted);font-weight:600;padding:4px 0;}
+.cal-day{text-align:center;padding:10px 4px;border-radius:10px;font-size:.82rem;cursor:pointer;border:1px solid transparent;transition:.2s;font-weight:500;}
+.cal-day.empty{cursor:default;}
+.cal-day.past{color:var(--muted);cursor:not-allowed;opacity:.4;}
+.cal-day.available{border-color:rgba(255,255,255,.08);background:rgba(255,255,255,.02);}
+.cal-day.available:hover{border-color:rgba(37,99,235,.4);background:rgba(37,99,235,.08);color:#fff;}
+.cal-day.selected{background:var(--blue);border-color:var(--blue);color:#fff;font-weight:700;}
+.cal-day.unavailable{color:var(--muted);opacity:.3;cursor:not-allowed;}
+.cal-nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
+.cal-nav button{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:var(--soft);padding:6px 14px;border-radius:8px;cursor:pointer;font-size:.82rem;transition:.2s;}
+.cal-nav button:hover{background:rgba(37,99,235,.15);border-color:rgba(37,99,235,.3);color:#fff;}
+.cal-month{font-size:.92rem;font-weight:700;}
+
+/* TIME SLOTS */
+.slots-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:4px;}
+.slot{padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02);text-align:center;cursor:pointer;font-size:.82rem;font-weight:500;transition:.2s;color:var(--soft);}
+.slot:hover{border-color:rgba(37,99,235,.4);background:rgba(37,99,235,.08);color:#fff;}
+.slot.selected{background:var(--blue);border-color:var(--blue);color:#fff;font-weight:700;}
+.slot.booked{opacity:.3;cursor:not-allowed;text-decoration:line-through;}
+.slot-note{font-size:.72rem;color:var(--muted);margin-top:12px;text-align:center;}
+
+/* BOOKING FORM */
+.bform{display:flex;flex-direction:column;gap:14px;}
+.bform input,.bform textarea,.bform select{width:100%;padding:13px 16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;color:var(--text);font-size:.87rem;font-family:inherit;transition:.2s;outline:none;}
+.bform input:focus,.bform textarea:focus{border-color:rgba(37,99,235,.5);background:rgba(37,99,235,.06);}
+.bform input::placeholder,.bform textarea::placeholder{color:var(--muted);}
+.bform-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.selected-slot-display{background:rgba(37,99,235,.1);border:1px solid rgba(37,99,235,.25);border-radius:10px;padding:14px 18px;font-size:.85rem;color:#93c5fd;font-weight:600;text-align:center;}
+.book-btn{padding:15px;background:var(--blue);color:#fff;border:none;border-radius:12px;font-size:.95rem;font-weight:700;cursor:pointer;transition:.25s;font-family:inherit;box-shadow:0 4px 20px rgba(37,99,235,.3);}
+.book-btn:hover{background:#1d4ed8;transform:translateY(-2px);}
+.book-btn:disabled{opacity:.5;cursor:not-allowed;transform:none;}
+.form-note{text-align:center;font-size:.73rem;color:var(--muted);}
+
+/* ════════════════════════════════
+   PAGE 3 — THANK YOU
+════════════════════════════════ */
+.thankyou-page{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:120px 48px 80px;}
+.ty-card{background:var(--card);border:1px solid rgba(37,99,235,.2);border-radius:24px;padding:60px 48px;text-align:center;max-width:600px;width:100%;position:relative;overflow:hidden;}
+.ty-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),#93c5fd,var(--blue));}
+.ty-icon{font-size:4rem;margin-bottom:20px;display:block;}
+.ty-card h1{font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800;margin-bottom:12px;letter-spacing:-.5px;}
+.ty-card h1 span{background:linear-gradient(135deg,#3b82f6,#93c5fd);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.ty-card p{color:var(--muted);font-size:.95rem;line-height:1.8;margin-bottom:10px;}
+.ty-booking-info{background:rgba(37,99,235,.08);border:1px solid rgba(37,99,235,.2);border-radius:14px;padding:20px;margin:24px 0;text-align:left;}
+.ty-booking-info h4{font-size:.82rem;color:var(--accent);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;}
+.ty-info-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:.85rem;}
+.ty-info-row:last-child{border-bottom:none;}
+.ty-info-row span:first-child{color:var(--muted);}
+.ty-info-row span:last-child{font-weight:600;color:var(--text);}
+.ty-steps{display:flex;flex-direction:column;gap:10px;margin:24px 0;text-align:left;}
+.ty-step{display:flex;align-items:flex-start;gap:12px;padding:12px 16px;background:rgba(255,255,255,.02);border-radius:10px;border:1px solid rgba(255,255,255,.05);}
+.ty-step-num{width:24px;height:24px;border-radius:6px;background:rgba(37,99,235,.2);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;color:var(--accent);flex-shrink:0;}
+.ty-step p{font-size:.82rem;color:var(--muted);margin:0;}
+.ty-step p strong{color:var(--soft);}
+.ty-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px;}
+
+/* CONTACT SECTION */
 .contact-section{background:linear-gradient(135deg,rgba(14,14,26,1),rgba(8,8,16,1));border-top:1px solid rgba(255,255,255,.05);}
 .contact-inner{max-width:1100px;margin:0 auto;padding:90px 48px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
 .contact-left h2{font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800;margin-bottom:10px;letter-spacing:-.5px;}
@@ -125,296 +220,515 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(8,8,16,0.92);bac
 .ci-icon{width:38px;height:38px;border-radius:10px;background:rgba(37,99,235,.12);display:flex;align-items:center;justify-content:center;font-size:1rem;}
 .ci-info h4{font-size:.82rem;font-weight:700;color:var(--text);margin-bottom:1px;}
 .ci-info p{font-size:.75rem;color:var(--muted);}
-.form{display:flex;flex-direction:column;gap:12px;}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-.form input,.form textarea,.form select{width:100%;padding:13px 16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;color:var(--text);font-size:.87rem;font-family:inherit;transition:.2s;outline:none;}
-.form input:focus,.form textarea:focus,.form select:focus{border-color:rgba(37,99,235,.5);background:rgba(37,99,235,.06);}
-.form input::placeholder,.form textarea::placeholder{color:var(--muted);}
-.form select option{background:#0e0e1a;color:#fff;}
-.form textarea{resize:vertical;min-height:120px;}
-.form-btn{padding:14px;background:var(--blue);color:#fff;border:none;border-radius:10px;font-size:.92rem;font-weight:700;cursor:pointer;transition:.25s;font-family:inherit;box-shadow:0 4px 20px rgba(37,99,235,.3);}
-.form-btn:hover{background:#1d4ed8;transform:translateY(-2px);}
-.form-note{text-align:center;font-size:.73rem;color:var(--muted);}
+.cform{display:flex;flex-direction:column;gap:12px;}
+.cform-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.cform input,.cform textarea,.cform select{width:100%;padding:13px 16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;color:var(--text);font-size:.87rem;font-family:inherit;transition:.2s;outline:none;}
+.cform input:focus,.cform textarea:focus{border-color:rgba(37,99,235,.5);background:rgba(37,99,235,.06);}
+.cform input::placeholder,.cform textarea::placeholder{color:var(--muted);}
+.cform select option{background:#0e0e1a;color:#fff;}
+.cform textarea{resize:vertical;min-height:110px;}
+.cform-btn{padding:14px;background:var(--blue);color:#fff;border:none;border-radius:10px;font-size:.92rem;font-weight:700;cursor:pointer;transition:.25s;font-family:inherit;}
+.cform-btn:hover{background:#1d4ed8;transform:translateY(-2px);}
 
 footer{text-align:center;padding:28px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;border-top:1px solid rgba(255,255,255,.04);}
 .footer-logo{font-weight:800;font-size:.95rem;background:linear-gradient(90deg,#fff,#93c5fd);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 footer p{color:var(--muted);font-size:.78rem;}
 
+/* TOAST */
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);background:#16a34a;color:#fff;padding:14px 28px;border-radius:12px;font-size:.88rem;font-weight:600;z-index:999;transition:.4s;opacity:0;pointer-events:none;}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1;}
+
 @media(max-width:768px){
   nav{padding:14px 20px;}
   .nav-links{gap:16px;}
   .nav-links a:not(.nav-cta){display:none;}
-  .hero{padding:100px 20px 60px;}
+  .hero{flex-direction:column;padding:100px 20px 60px;gap:40px;}
+  .hero-right{width:100%;display:flex;justify-content:center;}
+  .hero-photo-wrap{width:260px;}
+  .hero-photo-box{width:260px;height:320px;}
   .sec{padding:60px 20px;}
   .about-wrap{grid-template-columns:1fr;}
   .about-img-box{height:280px;}
   .contact-inner{grid-template-columns:1fr;padding:60px 20px;gap:40px;}
-  .form-row{grid-template-columns:1fr;}
+  .cform-row,.bform-row{grid-template-columns:1fr;}
+  .slots-grid{grid-template-columns:repeat(2,1fr);}
   footer{flex-direction:column;text-align:center;padding:24px 20px;}
+  .booking-page{padding:100px 20px 60px;}
+  .thankyou-page{padding:100px 20px 60px;}
+  .ty-card{padding:36px 24px;}
+  .ty-btns{flex-direction:column;}
 }
 </style>
 </head>
 <body>
 
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
 <!-- NAV -->
 <nav>
-  <div class="logo-wrap">
-    <div class="logo-main">Shadab Ads Studio</div>
-    <div class="logo-sub">by Shadab Ansari</div>
+  <div class="logo-wrap" onclick="showPage('home')">
+    <div class="logo-avatar">🧑</div>
+    <div class="logo-text">
+      <div class="logo-main">Shadab Ads Studio</div>
+      <div class="logo-sub">by Shadab Ansari</div>
+    </div>
   </div>
   <div class="nav-links">
-    <a href="#services">Services</a>
-    <a href="#results">Results</a>
-    <a href="#about">About</a>
-    <a href="#process">Process</a>
-    <a href="#contact" class="nav-cta">Book a Call</a>
+    <a onclick="showPage('home');scrollTo(0,0)">Home</a>
+    <a onclick="showPage('home');setTimeout(()=>scrollToSec('services'),50)">Services</a>
+    <a onclick="showPage('home');setTimeout(()=>scrollToSec('results'),50)">Results</a>
+    <a onclick="showPage('home');setTimeout(()=>scrollToSec('about'),50)">About</a>
+    <a onclick="showPage('booking')" class="nav-cta">Book a Call</a>
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-glow"></div>
-  <div class="hero-inner">
-    <div class="hero-badge"><span class="live-dot"></span>Available for New Clients</div>
-    <div class="hero-studio">Shadab Ads Studio</div>
-    <div class="hero-byline">Founded by <span>Shadab Ansari</span> · Paid Social Media Specialist</div>
-    <div class="hero-role">Meta Ads · Lead Generation · Content Strategy · Pakistan</div>
-    <p class="hero-desc">
-      I help businesses <strong>generate qualified leads, scale their brand, and get real return on every ad rupee</strong> — through precision-targeted Facebook & Instagram campaigns backed by data and strategy.
-    </p>
-    <div class="hero-btns">
-      <a href="#contact" class="btn btn-primary">📞 Book a Free Call</a>
-      <a href="#results" class="btn btn-ghost">📊 See Results</a>
-    </div>
-    <div class="stats-row">
-      <div class="stat"><div class="stat-num">1+</div><div class="stat-lbl">Year in Marketing</div></div>
-      <div class="stat"><div class="stat-num">3</div><div class="stat-lbl">Certifications</div></div>
-      <div class="stat"><div class="stat-num">100%</div><div class="stat-lbl">Committed</div></div>
-      <div class="stat"><div class="stat-num">0%</div><div class="stat-lbl">Wasted Budget</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section class="sec" id="services">
-  <div class="sec-tag">What I Offer</div>
-  <div class="sec-title">Services</div>
-  <div class="sec-sub">Every service is built around one goal — results that show in your numbers, not just in reports.</div>
-  <div class="services-grid">
-
-    <div class="service-card">
-      <div class="svc-icon-wrap">
-        <!-- Meta "M" icon using SVG -->
-        <svg class="meta-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M5 26.5C5 29.5 6.5 31.5 8.8 31.5C10.8 31.5 12 30.3 13.8 27.5L16.5 23L13.5 18C11.8 15.3 10.5 14.5 8.8 14.5C6.3 14.5 5 16.8 5 20V26.5Z" fill="#1877F2"/>
-          <path d="M20 23.5L17.3 19C15.5 16 14 14.5 12 14.5C11.2 14.5 10.5 14.7 9.8 15.2C11.2 15.8 12.5 17.3 14 19.8L17 24.8L14.3 29C12.8 31.5 11.5 32.5 9.5 32.5C9 32.5 8.5 32.4 8 32.2C9 33.3 10.3 34 12 34C14.3 34 15.8 32.8 17.8 29.5L20 25.8L22.2 29.5C24.2 32.8 25.7 34 28 34C29.7 34 31 33.3 32 32.2C31.5 32.4 31 32.5 30.5 32.5C28.5 32.5 27.2 31.5 25.7 29L23 25L26 20C27.5 17.5 28.8 16 30.2 15.3C29.5 14.8 28.8 14.5 28 14.5C26 14.5 24.5 16 22.7 19L20 23.5Z" fill="#1877F2"/>
-          <path d="M27.5 14.5C25.5 14.5 24 16 22.2 19L20 23L22.7 27.5C24.5 30.3 25.7 31.5 27.7 31.5C30 31.5 31.5 29.5 31.5 26.5V20C31.5 16.8 30.2 14.5 27.5 14.5Z" fill="#1877F2"/>
-        </svg>
-      </div>
-      <div class="svc-title">Facebook & Instagram Ads</div>
-      <div class="svc-desc">End-to-end Meta campaign management. From targeting strategy to creative execution — I handle everything while you focus on your business.</div>
-      <ul class="svc-list">
-        <li>Full campaign setup & structure</li>
-        <li>Ad creative & copy writing</li>
-        <li>A/B testing & continuous optimization</li>
-        <li>Weekly performance reports</li>
-      </ul>
-    </div>
-
-    <div class="service-card">
-      <div class="svc-icon-wrap"><div class="svc-emoji">🎯</div></div>
-      <div class="svc-title">Lead Generation Campaigns</div>
-      <div class="svc-desc">Stop chasing cold leads. I build precision-targeted campaigns that bring qualified buyers directly to you — at the lowest possible cost per lead.</div>
-      <ul class="svc-list">
-        <li>In-depth buyer persona research</li>
-        <li>Custom & lookalike audience setup</li>
-        <li>Instant Form & landing page optimization</li>
-        <li>CPL reduction strategy</li>
-      </ul>
-    </div>
-
-    <div class="service-card">
-      <div class="svc-icon-wrap"><div class="svc-emoji">📅</div></div>
-      <div class="svc-title">Content Strategy & Management</div>
-      <div class="svc-desc">Consistent, on-brand content that builds trust and keeps your audience engaged — planned, designed, and scheduled every month.</div>
-      <ul class="svc-list">
-        <li>Monthly content calendar</li>
-        <li>Branded visual creation (Canva)</li>
-        <li>Caption writing & hashtag strategy</li>
-        <li>Engagement & growth tactics</li>
-      </ul>
-    </div>
-
-  </div>
-</section>
-
-<!-- RESULTS -->
-<section class="sec" id="results">
-  <div class="sec-tag">Work & Results</div>
-  <div class="sec-title">Strategy in Action</div>
-  <div class="sec-sub">A look at the strategies I've built, tested, and optimized — across different industries and objectives.</div>
-  <div class="results-grid">
-
-    <div class="result-card">
-      <div class="result-top">
-        <div class="industry-tag">🛍 E-Commerce · Fashion</div>
-        <h3>Conversion-Focused Facebook Ad Campaign</h3>
-        <div class="result-obj">Objective: Online Sales · Target: Women 18–30, Karachi</div>
-      </div>
-      <div class="result-body">
-        <p>Designed and tested 3 ad creatives with 2 copy variants. Bilingual Urdu-English copy outperformed English-only by 2x. Budget optimized across broad, interest-based, and lookalike audiences.</p>
-        <div class="metrics">
-          <span class="met">+18% CTR</span><span class="met">Rs. 9 CPC</span><span class="met">22 Sales</span>
+<!-- ════ PAGE: HOME ════ -->
+<div class="page active" id="pg-home">
+  <div style="position:relative;overflow:hidden;">
+    <div class="hero-glow"></div>
+    <div class="hero">
+      <div class="hero-left">
+        <div class="hero-badge"><span class="live-dot"></span>Available for New Clients</div>
+        <div class="hero-studio">Shadab Ads Studio</div>
+        <div class="hero-byline">Founded by <span>Shadab Ansari</span> · Paid Social Specialist · Pakistan</div>
+        <p class="hero-desc">Your business deserves ads that <strong>actually make money.</strong> I build Facebook & Instagram campaigns that bring the right people to you — people ready to buy, not just scroll past.</p>
+        <div class="hero-btns">
+          <a onclick="showPage('booking')" class="btn btn-primary">📞 Book a Free Call</a>
+          <a onclick="scrollToSec('results')" class="btn btn-ghost">📊 See Results</a>
         </div>
-        <div class="tags">
-          <span class="tag">Facebook Ads</span><span class="tag">A/B Testing</span><span class="tag">Conversions</span>
+        <div class="stats-row">
+          <div class="stat"><div class="stat-num">100%</div><div class="stat-lbl">Budget Accountability</div></div>
+          <div class="stat"><div class="stat-num">0%</div><div class="stat-lbl">Wasted Spend</div></div>
+          <div class="stat"><div class="stat-num">24hr</div><div class="stat-lbl">Response Time</div></div>
         </div>
       </div>
-    </div>
-
-    <div class="result-card">
-      <div class="result-top">
-        <div class="industry-tag">🍔 Food & Beverage</div>
-        <h3>Instagram Brand Awareness & Growth</h3>
-        <div class="result-obj">Objective: Brand Awareness · Duration: 4 Weeks</div>
-      </div>
-      <div class="result-body">
-        <p>Built a full 4-week content system — branded visuals, Stories, Reels, and interactive polls. Niche hashtag strategy and consistent posting drove significant organic growth within the first month.</p>
-        <div class="metrics">
-          <span class="met">+340% Reach</span><span class="met">800+ Story Views</span><span class="met">+210% Profile Visits</span>
-        </div>
-        <div class="tags">
-          <span class="tag">Instagram</span><span class="tag">Content Strategy</span><span class="tag">Organic Growth</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="result-card">
-      <div class="result-top">
-        <div class="industry-tag">🏠 Real Estate</div>
-        <h3>High-Intent Lead Generation via Meta Ads</h3>
-        <div class="result-obj">Objective: Qualified Leads · Target: Buyers 30–50</div>
-      </div>
-      <div class="result-body">
-        <p>Applied PAS copywriting framework with bilingual ad copy. Lookalike audiences significantly outperformed interest targeting on CPL. Simplified 3-field form maximized completion rate.</p>
-        <div class="metrics">
-          <span class="met">68 Leads</span><span class="met">−22% CPL</span><span class="met">73% Form Rate</span>
-        </div>
-        <div class="tags">
-          <span class="tag">Lead Generation</span><span class="tag">Lookalike Audiences</span><span class="tag">PAS Copywriting</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section class="sec" id="about">
-  <div class="about-wrap">
-    <div>
-      <div class="about-img-box">
-        <!--
-          PHOTO:
-          1. Go to remove.bg → upload photo → download PNG
-          2. Save as "shadab.png" in same folder as index.html
-          3. Replace the div below with: <img src="shadab.png" alt="Shadab Ansari"/>
-        -->
-        <div class="about-placeholder">
-          <div class="big">🧑‍💼</div>
-          <div>Add your photo here<br/><small>See instructions in code</small></div>
-        </div>
-        <div class="about-tag-float">📍 Pakistan · Available for Remote Work</div>
-      </div>
-    </div>
-    <div class="about-content">
-      <div class="sec-tag">The Person Behind the Studio</div>
-      <h2 style="font-size:clamp(1.6rem,2.5vw,2.2rem);font-weight:800;margin-bottom:6px;letter-spacing:-.5px;">Why Work With<br/>Shadab Ads Studio?</h2>
-      <div class="tagline">Self-made. Driven. Results-focused.</div>
-      <p>I didn't come from a marketing background or have easy access to resources. What I had was <strong>genuine curiosity and an obsession with understanding how businesses grow online</strong> — and that's what built Shadab Ads Studio.</p>
-      <p>Over the past year, I've invested deeply into mastering Meta Ads, content strategy, and performance marketing. I earned certifications from <strong>Bano Qabil, Meta Blueprint, and Google Digital Garage</strong> — while learning from industry professionals who pushed me to think like a strategist, not just an executor.</p>
-      <p>What that means for you: you get someone who will <strong>treat your budget like their own money</strong> — strategic, careful, and completely focused on your results.</p>
-      <div class="about-vals">
-        <div class="val-item">
-          <div class="val-icon">💡</div>
-          <div class="val-text"><h4>Strategy Before Spending</h4><p>Every rupee is planned before it's spent. No guesswork, no wasted budget.</p></div>
-        </div>
-        <div class="val-item">
-          <div class="val-icon">📊</div>
-          <div class="val-text"><h4>Data Drives Every Decision</h4><p>I test, measure, and optimize continuously — not assume and hope.</p></div>
-        </div>
-        <div class="val-item">
-          <div class="val-icon">🤝</div>
-          <div class="val-text"><h4>Your Growth is My Reputation</h4><p>I'm building this studio on the results I deliver. That's my strongest guarantee.</p></div>
+      <div class="hero-right">
+        <div class="hero-photo-wrap">
+          <div class="hero-photo-box">
+            <!--
+              PHOTO: save as shadab.png in same folder
+              Replace div below with: <img src="shadab.png" alt="Shadab Ansari"/>
+            -->
+            <img src="shadab.png" alt="Shadab Ansari"/>
+          </div>
+          <div class="hero-photo-glow"></div>
+          <div class="hero-photo-tag">📍 Pakistan · Remote Available</div>
+          <div class="floating-badge badge-top"><span>📈</span><div class="fb-text"><span>+340% Reach</span><span>Instagram Campaign</span></div></div>
+          <div class="floating-badge badge-bottom"><span>🎯</span><div class="fb-text"><span>68 Leads Generated</span><span>Real Estate Campaign</span></div></div>
         </div>
       </div>
     </div>
   </div>
-</section>
 
-<!-- PROCESS -->
-<section class="sec" id="process">
-  <div class="sec-tag">How It Works</div>
-  <div class="sec-title">My Process</div>
-  <div class="sec-sub">Simple, transparent, and designed to get you results as fast as possible.</div>
-  <div class="process-grid">
-    <div class="process-card"><div class="p-num">01</div><h4>Discovery Call</h4><p>We discuss your business, goals, target audience, and what success looks like for you specifically.</p></div>
-    <div class="process-card"><div class="p-num">02</div><h4>Strategy & Plan</h4><p>I build a custom campaign plan — audiences, creatives, copy, budget allocation, and clear KPIs.</p></div>
-    <div class="process-card"><div class="p-num">03</div><h4>Launch & Execute</h4><p>Campaign goes live. I monitor daily, test variations, and optimize in real time for best performance.</p></div>
-    <div class="process-card"><div class="p-num">04</div><h4>Report & Scale</h4><p>You receive clear, honest reports. We double down on what works and eliminate what doesn't.</p></div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<div class="contact-section" id="contact">
-  <div class="contact-inner">
-    <div class="contact-left">
-      <div class="sec-tag">Let's Work Together</div>
-      <h2>Book a Free<br/>Strategy Call</h2>
-      <p>Got a business you want to grow? Fill the form and I'll reach out within 24 hours to schedule a free call — no commitment, just a real conversation about your goals.</p>
-      <div class="contact-items">
-        <a href="tel:+92 3132163712" class="contact-item">
-          <div class="ci-icon">📞</div>
-          <div class="ci-info"><h4>Phone / WhatsApp</h4><p>+92  313 2163712</p></div>
-        </a>
-        <a href="mailto:ansahadab65@gmail.com" class="contact-item">
-          <div class="ci-icon">📧</div>
-          <div class="ci-info"><h4>Email</h4><p>ansahadab65@gmail.com</p></div>
-        </a>
-        <a href="https://www.linkedin.com/in/shadabansar/" target="_blank" class="contact-item">
-          <div class="ci-icon">💼</div>
-          <div class="ci-info"><h4>LinkedIn</h4><p>linkedin.com/in/shadabansar</p></div>
-        </a>
+  <!-- SERVICES -->
+  <section class="sec" id="services">
+    <div class="sec-tag">What I Offer</div>
+    <div class="sec-title">Services</div>
+    <div class="sec-sub">Every service is built around one goal — results that show in your revenue, not just in reports.</div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="svc-icon-wrap">
+          <svg class="meta-svg" viewBox="0 0 40 40" fill="none"><path d="M5 26.5C5 29.5 6.5 31.5 8.8 31.5C10.8 31.5 12 30.3 13.8 27.5L16.5 23L13.5 18C11.8 15.3 10.5 14.5 8.8 14.5C6.3 14.5 5 16.8 5 20V26.5Z" fill="#1877F2"/><path d="M20 23.5L17.3 19C15.5 16 14 14.5 12 14.5C11.2 14.5 10.5 14.7 9.8 15.2C11.2 15.8 12.5 17.3 14 19.8L17 24.8L14.3 29C12.8 31.5 11.5 32.5 9.5 32.5C9 32.5 8.5 32.4 8 32.2C9 33.3 10.3 34 12 34C14.3 34 15.8 32.8 17.8 29.5L20 25.8L22.2 29.5C24.2 32.8 25.7 34 28 34C29.7 34 31 33.3 32 32.2C31.5 32.4 31 32.5 30.5 32.5C28.5 32.5 27.2 31.5 25.7 29L23 25L26 20C27.5 17.5 28.8 16 30.2 15.3C29.5 14.8 28.8 14.5 28 14.5C26 14.5 24.5 16 22.7 19L20 23.5Z" fill="#1877F2"/><path d="M27.5 14.5C25.5 14.5 24 16 22.2 19L20 23L22.7 27.5C24.5 30.3 25.7 31.5 27.7 31.5C30 31.5 31.5 29.5 31.5 26.5V20C31.5 16.8 30.2 14.5 27.5 14.5Z" fill="#1877F2"/></svg>
+        </div>
+        <div class="svc-title">Facebook & Instagram Ads</div>
+        <div class="svc-desc">You've tried boosting posts and got nothing. I run proper Meta campaigns — built on data, tested on real audiences, and optimized until your money works harder than you do.</div>
+        <ul class="svc-list"><li>Full campaign setup & structure</li><li>Scroll-stopping creatives & copy</li><li>Continuous A/B testing & optimization</li><li>Clear weekly performance reports</li></ul>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon-wrap"><div class="svc-emoji">🎯</div></div>
+        <div class="svc-title">Lead Generation Campaigns</div>
+        <div class="svc-desc">Wrong leads waste your time and money. I build campaigns that target exactly the people already looking for what you sell — and bring them straight to you.</div>
+        <ul class="svc-list"><li>Deep buyer persona research</li><li>Custom & lookalike audience targeting</li><li>High-converting lead form setup</li><li>Cost-per-lead reduction strategy</li></ul>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon-wrap"><div class="svc-emoji">📅</div></div>
+        <div class="svc-title">Content Strategy & Management</div>
+        <div class="svc-desc">Inconsistent posting kills brands. I build a content system that keeps your audience engaged, builds trust, and turns followers into paying customers.</div>
+        <ul class="svc-list"><li>Monthly content calendar</li><li>On-brand visual creation</li><li>Caption writing & hashtag strategy</li><li>Engagement & follower growth tactics</li></ul>
       </div>
     </div>
-    <div class="contact-right">
-      <form class="form" action="https://formspree.io/f/mdalqkej" method="POST">
-        <div class="form-row">
-          <input type="text" name="name" placeholder="Your Name" required/>
-          <input type="email" name="email" placeholder="Your Email" required/>
+  </section>
+
+  <!-- RESULTS -->
+  <section class="sec" id="results">
+    <div class="sec-tag">Proof of Work</div>
+    <div class="sec-title">Results That Speak</div>
+    <div class="sec-sub">Real strategies applied to real business problems — here's what happened.</div>
+    <div class="results-grid">
+      <div class="result-card">
+        <div class="result-top"><div class="industry-tag">🛍 Fashion · E-Commerce</div><h3>More Sales, Lower Cost Per Click</h3><div class="result-obj">Facebook Ads · Conversion Campaign · Karachi</div></div>
+        <div class="result-body"><p>A local fashion brand was spending on ads but not seeing sales. I rebuilt their campaign — new audience structure, fresh creatives, and bilingual copy that actually spoke to their customers. Cost dropped, conversions doubled.</p><div class="metrics"><span class="met">+18% CTR</span><span class="met">Rs. 9 CPC</span><span class="met">22 Sales</span></div><div class="tags"><span class="tag">Facebook Ads</span><span class="tag">A/B Testing</span><span class="tag">Bilingual Copy</span></div></div>
+      </div>
+      <div class="result-card">
+        <div class="result-top"><div class="industry-tag">🍔 Food & Beverage</div><h3>From Zero Presence to a Growing Community</h3><div class="result-obj">Instagram Growth · Content Strategy · 4 Weeks</div></div>
+        <div class="result-body"><p>A new food brand had an Instagram page but zero traction. I built their entire content system — brand identity, weekly calendar, Reels strategy, and interactive Stories. Within one month, their audience tripled and engagement exploded.</p><div class="metrics"><span class="met">+340% Reach</span><span class="met">800+ Story Views/week</span><span class="met">+210% Profile Visits</span></div><div class="tags"><span class="tag">Instagram</span><span class="tag">Content Strategy</span><span class="tag">Community Growth</span></div></div>
+      </div>
+      <div class="result-card">
+        <div class="result-top"><div class="industry-tag">🏠 Real Estate</div><h3>68 Qualified Buyers. Less Spend.</h3><div class="result-obj">Facebook Lead Generation · Meta Instant Forms</div></div>
+        <div class="result-body"><p>A real estate client needed serious buyers — not time-wasters. Lookalike audiences, PAS-driven bilingual copy, and a simplified lead form. 68 qualified leads at 22% below industry average cost.</p><div class="metrics"><span class="met">68 Qualified Leads</span><span class="met">−22% CPL</span><span class="met">73% Form Rate</span></div><div class="tags"><span class="tag">Lead Generation</span><span class="tag">Lookalike Audiences</span><span class="tag">PAS Copywriting</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="sec" id="about">
+    <div class="about-wrap">
+      <div>
+        <div class="about-img-box">
+          <div class="about-placeholder"><div style="font-size:3.5rem">🧑‍💼</div><div>Add shadab.png here</div></div>
+          <div class="about-tag-float">📍 Pakistan · Available Remotely</div>
         </div>
-        <input type="text" name="phone" placeholder="WhatsApp Number (Optional)"/>
-        <select name="service">
-          <option value="" disabled selected>Which service do you need?</option>
+      </div>
+      <div class="about-content">
+        <div class="sec-tag">Who Is Behind This</div>
+        <h2 style="font-size:clamp(1.6rem,2.5vw,2.2rem);font-weight:800;margin-bottom:6px;letter-spacing:-.5px;">Built by Someone Who Has Everything to Prove</h2>
+        <div class="tagline">Self-made. Driven. Results-focused.</div>
+        <p>I didn't grow up with resources or connections. What I had was an obsession — the moment I discovered how digital marketing works, I couldn't stop. While most people my age were doing other things, <strong>I was deep in ad managers, studying campaigns, and learning from industry professionals</strong> who pushed me to think like a strategist.</p>
+        <p>That background means one thing for your business: <strong>every rupee you spend goes through a strategy first.</strong> I test before I scale, I measure before I claim results, and I only call something a win when your numbers actually go up.</p>
+        <div class="about-vals">
+          <div class="val-item"><div class="val-icon">💡</div><div class="val-text"><h4>Strategy First, Spending Second</h4><p>Your ad budget gets a plan before it gets spent. No guesswork, no blind boosting.</p></div></div>
+          <div class="val-item"><div class="val-icon">📊</div><div class="val-text"><h4>Numbers Don't Lie</h4><p>Every decision is backed by data. I test, measure, and optimize — not assume.</p></div></div>
+          <div class="val-item"><div class="val-icon">🤝</div><div class="val-text"><h4>Your Win is My Reputation</h4><p>I'm building this studio on client results. That's the only guarantee that matters.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="sec" id="process">
+    <div class="sec-tag">How It Works</div>
+    <div class="sec-title">Simple. Transparent. Effective.</div>
+    <div class="sec-sub">No confusing agency processes. Here's exactly what happens when you work with me.</div>
+    <div class="process-grid">
+      <div class="process-card"><div class="p-num">01</div><h4>Free Strategy Call</h4><p>We talk about your business, your current situation, and what you actually want to achieve — no pitch, just honest conversation.</p></div>
+      <div class="process-card"><div class="p-num">02</div><h4>Custom Campaign Plan</h4><p>I build a plan specific to your business — audiences, creatives, budget split, and clear KPIs you'll actually understand.</p></div>
+      <div class="process-card"><div class="p-num">03</div><h4>Launch & Optimize</h4><p>Campaign goes live. I watch it daily, kill what's not working, and push what is — until your results are where they need to be.</p></div>
+      <div class="process-card"><div class="p-num">04</div><h4>Report & Scale</h4><p>You get an honest report — no fluff. Then we take what's working and scale it to bring you more results.</p></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <div class="contact-section" id="contact">
+    <div class="contact-inner">
+      <div class="contact-left">
+        <div class="sec-tag">Let's Work Together</div>
+        <h2>Book Your Free<br/>Strategy Call</h2>
+        <p>Not sure if this is right for your business? That's exactly what the free call is for. Tell me about your situation, and I'll tell you honestly what I can do for you — no obligation, no pressure.</p>
+        <div class="contact-items">
+          <a href="tel:+92XXXXXXXXXX" class="contact-item"><div class="ci-icon">📞</div><div class="ci-info"><h4>Phone / WhatsApp</h4><p>+92 XXX XXXXXXX</p></div></a>
+          <a href="mailto:ansahadab65@gmail.com" class="contact-item"><div class="ci-icon">📧</div><div class="ci-info"><h4>Email</h4><p>ansahadab65@gmail.com</p></div></a>
+          <a href="https://www.linkedin.com/in/shadabansar/" target="_blank" class="contact-item"><div class="ci-icon">💼</div><div class="ci-info"><h4>LinkedIn</h4><p>linkedin.com/in/shadabansar</p></div></a>
+        </div>
+      </div>
+      <div class="contact-right">
+        <form class="cform" action="https://formspree.io/f/mdalqkej" method="POST">
+          <div class="cform-row">
+            <input type="text" name="name" placeholder="Your Name" required/>
+            <input type="email" name="email" placeholder="Your Email" required/>
+          </div>
+          <input type="text" name="phone" placeholder="WhatsApp Number" required/>
+          <select name="service" required>
+            <option value="" disabled selected>What do you need help with?</option>
+            <option>Facebook & Instagram Ads</option>
+            <option>Lead Generation Campaign</option>
+            <option>Content Strategy & Management</option>
+            <option>Full Package</option>
+            <option>Not Sure — Let's Talk</option>
+          </select>
+          <textarea name="message" placeholder="Tell me about your business..."></textarea>
+          <button type="submit" class="cform-btn">📞 Book My Free Call</button>
+          <div class="form-note">✅ I respond within 24 hours · No spam, ever</div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-logo">Shadab Ads Studio</div>
+    <p>© 2025 Shadab Ansari · Pakistan</p>
+    <p style="color:#1e3a5f;font-size:.72rem;">shadabio.github.io</p>
+  </footer>
+</div>
+
+<!-- ════ PAGE: BOOKING ════ -->
+<div class="page" id="pg-booking">
+  <div class="booking-page">
+    <div class="booking-header">
+      <div class="hero-badge" style="margin:0 auto 16px;"><span class="live-dot"></span>Free 30-Min Strategy Call</div>
+      <h1>Book Your <span>Strategy Call</span></h1>
+      <p>Pick a date and time that works for you. I'll send a WhatsApp confirmation within 1 hour.</p>
+    </div>
+
+    <!-- STEP 1: CALENDAR -->
+    <div class="booking-card">
+      <h3>📅 Step 1 — Select a Date</h3>
+      <div class="cal-nav">
+        <button onclick="changeMonth(-1)">← Prev</button>
+        <div class="cal-month" id="calMonth"></div>
+        <button onclick="changeMonth(1)">Next →</button>
+      </div>
+      <div class="calendar-grid" id="calDayNames"></div>
+      <div class="calendar-grid" id="calDays"></div>
+    </div>
+
+    <!-- STEP 2: TIME SLOTS -->
+    <div class="booking-card" id="slotsCard" style="display:none;">
+      <h3>🕐 Step 2 — Select a Time Slot</h3>
+      <div class="slots-grid" id="slotsGrid"></div>
+      <!--
+        ══════════════════════════════════════════
+        TO CHANGE TIME SLOTS — edit the array below in JS:
+        AVAILABLE_SLOTS = ['10:00 AM','11:00 AM', ...]
+        BOOKED_SLOTS = ['12:00 PM'] ← these show as unavailable
+        ══════════════════════════════════════════
+      -->
+      <div class="slot-note">⏱ Each call is 30 minutes · All times are PKT (Pakistan Standard Time)</div>
+    </div>
+
+    <!-- STEP 3: FORM -->
+    <div class="booking-card" id="bookingFormCard" style="display:none;">
+      <h3>📋 Step 3 — Your Details</h3>
+      <div class="selected-slot-display" id="selectedSlotDisplay">📅 — · 🕐 —</div>
+      <br/>
+      <div class="bform">
+        <div class="bform-row">
+          <input type="text" id="bName" placeholder="Your Full Name" required/>
+          <input type="email" id="bEmail" placeholder="Email Address" required/>
+        </div>
+        <input type="text" id="bPhone" placeholder="WhatsApp Number (e.g. 0312-1234567)" required/>
+        <select id="bService">
+          <option value="" disabled selected>What do you need help with?</option>
           <option>Facebook & Instagram Ads</option>
           <option>Lead Generation Campaign</option>
           <option>Content Strategy & Management</option>
-          <option>Full Package — All Services</option>
-          <option>Not Sure — Let's Discuss</option>
+          <option>Full Package</option>
+          <option>Not Sure — Let's Talk</option>
         </select>
-        <textarea name="message" placeholder="Tell me about your business and what you want to achieve..."></textarea>
-        <button type="submit" class="form-btn">📞 Book a Free Call</button>
-        <div class="form-note">✅ I respond within 24 hours · No spam, ever</div>
-      </form>
+        <textarea id="bMessage" placeholder="Anything specific you want to discuss on the call? (optional)" rows="3"></textarea>
+        <button class="book-btn" id="bookBtn" onclick="submitBooking()">✅ Confirm My Booking</button>
+        <div class="form-note">🔒 Your info is private · No spam · Free call, zero commitment</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-logo">Shadab Ads Studio</div>
+    <p>© 2025 Shadab Ansari · Pakistan</p>
+    <p style="color:#1e3a5f;font-size:.72rem;">shadabio.github.io</p>
+  </footer>
+</div>
+
+<!-- ════ PAGE: THANK YOU ════ -->
+<div class="page" id="pg-thankyou">
+  <div class="thankyou-page">
+    <div class="ty-card">
+      <span class="ty-icon">🎉</span>
+      <h1>You're <span>Booked!</span></h1>
+      <p>Your strategy call has been confirmed. I'm looking forward to talking with you and figuring out exactly how to grow your business.</p>
+
+      <div class="ty-booking-info">
+        <h4>📋 Your Booking Summary</h4>
+        <div class="ty-info-row"><span>Name</span><span id="ty-name">—</span></div>
+        <div class="ty-info-row"><span>Date</span><span id="ty-date">—</span></div>
+        <div class="ty-info-row"><span>Time</span><span id="ty-time">—</span></div>
+        <div class="ty-info-row"><span>Duration</span><span>30 Minutes</span></div>
+        <div class="ty-info-row"><span>WhatsApp</span><span id="ty-phone">—</span></div>
+      </div>
+
+      <div class="ty-steps">
+        <div class="ty-step"><div class="ty-step-num">1</div><p><strong>Check your WhatsApp</strong> — I'll send a confirmation message within 1 hour.</p></div>
+        <div class="ty-step"><div class="ty-step-num">2</div><p><strong>Prepare 3 things:</strong> your business goal, current monthly budget, and biggest marketing challenge.</p></div>
+        <div class="ty-step"><div class="ty-step-num">3</div><p><strong>Show up on time</strong> — the call is 30 minutes. We'll cover everything you need to know.</p></div>
+      </div>
+
+      <div class="ty-btns">
+        <a onclick="showPage('home')" class="btn btn-ghost">← Back to Home</a>
+        <a href="https://wa.me/92XXXXXXXXXX" target="_blank" class="btn btn-primary">💬 WhatsApp Me Now</a>
+      </div>
     </div>
   </div>
 </div>
 
-<footer>
-  <div class="footer-logo">Shadab Ads Studio</div>
-  <p>© 2026 Shadab Ansari · Pakistan</p>
-  <p style="color:#1e3a5f;font-size:.72rem;">shadabio.github.io</p>
-</footer>
+<script>
+// ════════════════════════════════════════════════
+// ⚙️ CONFIGURATION — Edit these to customize
+// ════════════════════════════════════════════════
 
+// Available time slots — add or remove as needed
+const AVAILABLE_SLOTS = [
+  '10:00 AM',
+  '11:00 AM',
+  '12:00 PM',
+  '02:00 PM',
+  '03:00 PM',
+  '04:00 PM',
+  '06:00 PM',
+  '07:00 PM'
+];
+
+// Slots that are already booked (show as unavailable)
+// Change these as calls get booked
+const BOOKED_SLOTS = ['12:00 PM', '03:00 PM'];
+
+// Days of week that are OFF (0=Sun, 1=Mon, ... 6=Sat)
+// Currently: Sunday (0) is off
+const OFF_DAYS = [0];
+
+// ════════════════════════════════════════════════
+// PAGE NAVIGATION
+// ════════════════════════════════════════════════
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('pg-' + name).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function scrollToSec(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({behavior:'smooth'});
+}
+
+// ════════════════════════════════════════════════
+// CALENDAR
+// ════════════════════════════════════════════════
+let currentDate = new Date();
+let selectedDate = null;
+let selectedTime = null;
+
+function renderCalendar() {
+  const y = currentDate.getFullYear();
+  const m = currentDate.getMonth();
+  const today = new Date();
+  today.setHours(0,0,0,0);
+
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('calMonth').textContent = months[m] + ' ' + y;
+
+  const dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const namesEl = document.getElementById('calDayNames');
+  namesEl.innerHTML = dayNames.map(d => `<div class="cal-day-name">${d}</div>`).join('');
+
+  const firstDay = new Date(y, m, 1).getDay();
+  const daysInMonth = new Date(y, m + 1, 0).getDate();
+
+  let html = '';
+  for (let i = 0; i < firstDay; i++) html += '<div class="cal-day empty"></div>';
+
+  for (let d = 1; d <= daysInMonth; d++) {
+    const date = new Date(y, m, d);
+    const isPast = date < today;
+    const isOff = OFF_DAYS.includes(date.getDay());
+    const isSelected = selectedDate && date.toDateString() === selectedDate.toDateString();
+
+    let cls = 'cal-day';
+    if (isPast || isOff) cls += ' past unavailable';
+    else if (isSelected) cls += ' selected';
+    else cls += ' available';
+
+    const clickable = !isPast && !isOff;
+    html += `<div class="${cls}" ${clickable ? `onclick="selectDate(${y},${m},${d})"` : ''}>${d}</div>`;
+  }
+
+  document.getElementById('calDays').innerHTML = html;
+}
+
+function changeMonth(dir) {
+  currentDate.setMonth(currentDate.getMonth() + dir);
+  renderCalendar();
+}
+
+function selectDate(y, m, d) {
+  selectedDate = new Date(y, m, d);
+  selectedTime = null;
+  renderCalendar();
+  renderSlots();
+  document.getElementById('slotsCard').style.display = 'block';
+  document.getElementById('bookingFormCard').style.display = 'none';
+  document.getElementById('slotsCard').scrollIntoView({behavior:'smooth'});
+}
+
+// ════════════════════════════════════════════════
+// TIME SLOTS
+// ════════════════════════════════════════════════
+function renderSlots() {
+  const grid = document.getElementById('slotsGrid');
+  grid.innerHTML = AVAILABLE_SLOTS.map(slot => {
+    const isBooked = BOOKED_SLOTS.includes(slot);
+    const isSelected = slot === selectedTime;
+    let cls = 'slot';
+    if (isBooked) cls += ' booked';
+    else if (isSelected) cls += ' selected';
+    return `<div class="${cls}" ${!isBooked ? `onclick="selectSlot('${slot}')"` : ''}>${slot}${isBooked ? '<br><small>Booked</small>' : ''}</div>`;
+  }).join('');
+}
+
+function selectSlot(time) {
+  selectedTime = time;
+  renderSlots();
+  const dateStr = selectedDate.toLocaleDateString('en-PK', {weekday:'long', year:'numeric', month:'long', day:'numeric'});
+  document.getElementById('selectedSlotDisplay').innerHTML = `📅 ${dateStr} &nbsp;·&nbsp; 🕐 ${time} PKT`;
+  document.getElementById('bookingFormCard').style.display = 'block';
+  document.getElementById('bookingFormCard').scrollIntoView({behavior:'smooth'});
+}
+
+// ════════════════════════════════════════════════
+// BOOKING SUBMIT
+// ════════════════════════════════════════════════
+async function submitBooking() {
+  const name = document.getElementById('bName').value.trim();
+  const email = document.getElementById('bEmail').value.trim();
+  const phone = document.getElementById('bPhone').value.trim();
+  const service = document.getElementById('bService').value;
+  const message = document.getElementById('bMessage').value.trim();
+
+  if (!name) { showToast('Please enter your name'); return; }
+  if (!email || !email.includes('@')) { showToast('Please enter a valid email'); return; }
+  if (!phone) { showToast('Please enter your WhatsApp number'); return; }
+  if (!selectedDate) { showToast('Please select a date'); return; }
+  if (!selectedTime) { showToast('Please select a time slot'); return; }
+
+  const btn = document.getElementById('bookBtn');
+  btn.disabled = true;
+  btn.textContent = 'Confirming...';
+
+  const dateStr = selectedDate.toLocaleDateString('en-PK', {weekday:'long', year:'numeric', month:'long', day:'numeric'});
+
+  // Send to Formspree
+  try {
+    await fetch('https://formspree.io/f/mdalqkej', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+      body: JSON.stringify({
+        name, email, phone, service, message,
+        booking_date: dateStr,
+        booking_time: selectedTime,
+        type: 'BOOKING'
+      })
+    });
+  } catch(e) { /* continue anyway */ }
+
+  // Fill thank you page
+  document.getElementById('ty-name').textContent = name;
+  document.getElementById('ty-date').textContent = dateStr;
+  document.getElementById('ty-time').textContent = selectedTime + ' PKT';
+  document.getElementById('ty-phone').textContent = phone;
+
+  showPage('thankyou');
+}
+
+// ════════════════════════════════════════════════
+// TOAST
+// ════════════════════════════════════════════════
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// INIT
+renderCalendar();
+</script>
 </body>
 </html>
