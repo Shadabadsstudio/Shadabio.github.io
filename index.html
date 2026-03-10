@@ -7,6 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans:wght@300;400;500;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>emailjs.init('ukq1DLePyy6TyDTmF');</script>
 <style>
 :root{--bg:#060608;--bg2:#080c14;--bg3:#0b1120;--blue:#2563ff;--bglow:rgba(37,99,255,0.22);--bsoft:rgba(37,99,255,0.1);--white:#f0f4ff;--muted:#9090b0;--border:rgba(37,99,255,0.18);--green:#22c55e;--fd:'Poppins',sans-serif;--fb:'Noto Sans',sans-serif;--fm:'Roboto Mono',monospace;}
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -403,41 +405,42 @@ footer{border-top:1px solid var(--border);padding:42px 24px;text-align:center;}
       <div class="bcard">
         <div class="btit">Book Your Free Strategy Call</div>
         <div class="bsub">Get personalized guidance and discover exactly what's holding your ads back — in just 15 minutes.</div>
-        <div class="fg"><label>FULL NAME</label><input type="text" id="fn" placeholder="Your full name"/></div>
-        <div class="fg"><label>EMAIL ADDRESS</label><input type="email" id="fe" placeholder="you@email.com"/></div>
-        <div class="fg"><label>WHATSAPP NUMBER</label><input type="tel" id="fw" placeholder="+92 3XX XXXXXXX"/></div>
+        <div class="fg"><label>FULL NAME *</label><input type="text" id="fn" name="name" placeholder="Your full name"/></div>
+        <div class="fg"><label>EMAIL ADDRESS *</label><input type="email" id="fe" name="email" placeholder="you@email.com"/></div>
+        <div class="fg"><label>WHATSAPP NUMBER *</label><input type="tel" id="fw" name="whatsapp" placeholder="+92 3XX XXXXXXX"/></div>
         <div class="rg">
           <label class="rl">HOW SOON ARE YOU READY TO START?</label>
           <div class="ropts">
-            <label class="ro"><input type="radio" name="q1" value="now"><span>Now — I'm ready to invest and move</span></label>
-            <label class="ro"><input type="radio" name="q1" value="month"><span>Within 1 month</span></label>
-            <label class="ro"><input type="radio" name="q1" value="look"><span>Just exploring for now</span></label>
+            <label class="ro"><input type="radio" name="readiness" value="Now — I'm ready to invest and move"><span>Now — I'm ready to invest and move</span></label>
+            <label class="ro"><input type="radio" name="readiness" value="Within 1 month"><span>Within 1 month</span></label>
+            <label class="ro"><input type="radio" name="readiness" value="Just exploring for now"><span>Just exploring for now</span></label>
           </div>
         </div>
         <div class="rg">
           <label class="rl">DO YOU HAVE AN AD BUDGET READY? (Min Rs. 5,000/month)</label>
           <div class="ropts">
-            <label class="ro"><input type="radio" name="q2" value="yes"><span>Yes — I have budget ready</span></label>
-            <label class="ro"><input type="radio" name="q2" value="no"><span>Not yet</span></label>
+            <label class="ro"><input type="radio" name="budget" value="Yes — I have budget ready"><span>Yes — I have budget ready</span></label>
+            <label class="ro"><input type="radio" name="budget" value="Not yet"><span>Not yet</span></label>
           </div>
         </div>
         <div class="rg">
           <label class="rl">ARE YOU THE DECISION-MAKER?</label>
           <div class="ropts">
-            <label class="ro"><input type="radio" name="q3" value="yes"><span>Yes, I make the decisions</span></label>
-            <label class="ro"><input type="radio" name="q3" value="no"><span>No, I need someone else's approval</span></label>
+            <label class="ro"><input type="radio" name="decision_maker" value="Yes, I make the decisions"><span>Yes, I make the decisions</span></label>
+            <label class="ro"><input type="radio" name="decision_maker" value="No, I need someone else's approval"><span>No, I need someone else's approval</span></label>
           </div>
         </div>
         <div class="rg">
           <label class="rl">WHAT TYPE OF BUSINESS?</label>
           <div class="ropts">
-            <label class="ro"><input type="radio" name="q4" value="ecom"><span>eCommerce / Online Store</span></label>
-            <label class="ro"><input type="radio" name="q4" value="local"><span>Local Business / Services</span></label>
-            <label class="ro"><input type="radio" name="q4" value="re"><span>Real Estate</span></label>
-            <label class="ro"><input type="radio" name="q4" value="other"><span>Other</span></label>
+            <label class="ro"><input type="radio" name="business_type" value="eCommerce / Online Store"><span>eCommerce / Online Store</span></label>
+            <label class="ro"><input type="radio" name="business_type" value="Local Business / Services"><span>Local Business / Services</span></label>
+            <label class="ro"><input type="radio" name="business_type" value="Real Estate"><span>Real Estate</span></label>
+            <label class="ro"><input type="radio" name="business_type" value="Other"><span>Other</span></label>
           </div>
         </div>
-        <button class="bsub2" onclick="doSubmit()">Confirm Booking &amp; Lock My Slot &rarr;</button>
+        <button class="bsub2" id="submitBtn" onclick="doSubmit()">Confirm Booking &amp; Lock My Slot &rarr;</button>
+        <div id="formMsg" style="display:none;margin-top:14px;padding:14px;border-radius:10px;text-align:center;font-size:0.85rem;"></div>
         <div class="btrust">&#128274; Private &middot; No spam &middot; WhatsApp confirmation within 1 hour</div>
       </div>
     </div>
@@ -527,9 +530,48 @@ function doSubmit(){
   var e=document.getElementById('fe').value.trim();
   var w=document.getElementById('fw').value.trim();
   if(!n||!e||!w){alert('Please fill in your name, email and WhatsApp number.');return;}
-  var t=document.getElementById('toast');
-  t.classList.add('show');
-  setTimeout(function(){t.classList.remove('show');},4000);
+
+  var btn=document.getElementById('submitBtn');
+  var msg=document.getElementById('formMsg');
+  btn.disabled=true;
+  btn.textContent='Sending...';
+
+  var params={
+    from_name: n,
+    from_email: e,
+    email: e,
+    whatsapp: w,
+    reply_to: e,
+    readiness: document.querySelector('input[name="readiness"]:checked') ? document.querySelector('input[name="readiness"]:checked').value : 'Not answered',
+    budget: document.querySelector('input[name="budget"]:checked') ? document.querySelector('input[name="budget"]:checked').value : 'Not answered',
+    decision_maker: document.querySelector('input[name="decision_maker"]:checked') ? document.querySelector('input[name="decision_maker"]:checked').value : 'Not answered',
+    business_type: document.querySelector('input[name="business_type"]:checked') ? document.querySelector('input[name="business_type"]:checked').value : 'Not answered'
+  };
+
+  // Send auto-reply to client + notification to Shadab simultaneously
+  Promise.all([
+    emailjs.send('service_pbvt2kj', 'template_x3wtxfo', params),
+    emailjs.send('service_pbvt2kj', 'template_b5zmqec', params)
+  ])
+  .then(function(){
+    msg.style.display='block';
+    msg.style.background='rgba(34,197,94,0.1)';
+    msg.style.border='1px solid rgba(34,197,94,0.3)';
+    msg.style.color='#22c55e';
+    msg.innerHTML='&#10003; Booking confirmed! Shadab will contact you on WhatsApp within 1 hour.';
+    btn.style.display='none';
+    document.getElementById('fn').value='';
+    document.getElementById('fe').value='';
+    document.getElementById('fw').value='';
+  }, function(){
+    msg.style.display='block';
+    msg.style.background='rgba(255,80,80,0.1)';
+    msg.style.border='1px solid rgba(255,80,80,0.3)';
+    msg.style.color='#ff5050';
+    msg.innerHTML='&#10005; Something went wrong. Please WhatsApp directly: +92 313 2163712';
+    btn.disabled=false;
+    btn.textContent='Confirm Booking \u0026 Lock My Slot \u2192';
+  });
 }
 </script>
 </body>
